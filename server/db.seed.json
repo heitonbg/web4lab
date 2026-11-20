@@ -1,0 +1,17 @@
+{
+  "lists": [
+    { "id": "inbox", "title": "Входящие", "createdAt": 1758790000000 }
+  ],
+  "tasks": [
+    {
+      "id": "t1",
+      "listId": "inbox",
+      "title": "Купить билеты",
+      "description": "",
+      "time": "",
+      "done": false,
+      "subtasks": [{ "id": "s1", "title": "Выбрать дату", "done": true }],
+      "createdAt": 1758790000000
+    }
+  ]
+}

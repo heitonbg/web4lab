@@ -5,6 +5,9 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "server": "node server/start.cjs",
+    "server:chaos": "cross-env CHAOS_RATE=0.3 node server/start.cjs",
+    "db:reset": "node server/reset.cjs",
     "build": "vite build",
     "preview": "vite preview",
     "lint": "eslint .",
@@ -12,18 +15,22 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^2.15.0",
     "react": "^19.2.0",
     "react-dom": "^19.2.0",
+    "react-redux": "^9.3.1",
     "react-router": "^7.9.0"
   },
   "devDependencies": {
     "@eslint/js": "^9.39.0",
     "@playwright/test": "^1.64.1",
     "@vitejs/plugin-react": "^5.1.0",
+    "cross-env": "^10.1.0",
     "eslint": "^9.39.0",
     "eslint-plugin-react-hooks": "^7.0.0",
     "eslint-plugin-react-refresh": "^0.4.24",
     "globals": "^16.5.0",
+    "json-server": "0.17.4",
     "vite": "^7.2.0"
   }
 }
