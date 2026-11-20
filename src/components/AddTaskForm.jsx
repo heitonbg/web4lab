@@ -1,4 +1,6 @@
 import { useRef, useState } from 'react';
+import sharedStyles from '../styles/shared.module.css';
+import styles from './AddTaskForm.module.css';
 
 export function AddTaskForm({ onAdd }) {
   const [title, setTitle] = useState('');
@@ -12,10 +14,10 @@ export function AddTaskForm({ onAdd }) {
     onAdd({ title: title.trim(), description: description.trim(), time });
     setTitle(''); setDescription(''); setTime(''); setError(''); input.current.focus();
   }
-  return <form className="add-task-form" onSubmit={submit} noValidate>
-    <label className="visually-hidden" htmlFor="new-task">Новая задача</label>
-    <div className="input-row"><input id="new-task" ref={input} placeholder="Что нужно сделать?" value={title} onChange={(event) => { setTitle(event.target.value); setError(''); }} maxLength={200} required aria-invalid={Boolean(error)} aria-describedby={error ? 'new-task-error' : undefined} /><button className="primary" type="submit"><span aria-hidden="true">＋ </span>Добавить</button></div>
-    {error && <p className="error" role="alert" id="new-task-error">{error}</p>}
-    <details className="task-options"><summary>Описание и время</summary><div className="field"><label htmlFor="new-description">Описание</label><textarea id="new-description" value={description} maxLength={5000} onChange={(event) => setDescription(event.target.value)} /></div><div className="field"><label htmlFor="new-time">Время (необязательно)</label><input id="new-time" type="time" value={time} onChange={(event) => setTime(event.target.value)} /></div></details>
+  return <form className={styles.addTaskForm} onSubmit={submit} noValidate>
+    <label className={sharedStyles.visuallyHidden} htmlFor="new-task">Новая задача</label>
+    <div className={sharedStyles.inputRow}><input id="new-task" ref={input} placeholder="Что нужно сделать?" value={title} onChange={(event) => { setTitle(event.target.value); setError(''); }} maxLength={200} required aria-invalid={Boolean(error)} aria-describedby={error ? 'new-task-error' : undefined} /><button className={sharedStyles.primary} type="submit"><span aria-hidden="true">＋ </span>Добавить</button></div>
+    {error && <p className={sharedStyles.error} role="alert" id="new-task-error">{error}</p>}
+    <details className={styles.taskOptions}><summary>Описание и время</summary><div className={sharedStyles.field}><label htmlFor="new-description">Описание</label><textarea id="new-description" value={description} maxLength={5000} onChange={(event) => setDescription(event.target.value)} /></div><div className={sharedStyles.field}><label htmlFor="new-time">Время (необязательно)</label><input id="new-time" type="time" value={time} onChange={(event) => setTime(event.target.value)} /></div></details>
   </form>;
 }

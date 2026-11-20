@@ -1,6 +1,8 @@
 import { useId, useRef, useState } from 'react';
+import sharedStyles from '../styles/shared.module.css';
+import styles from './TextForm.module.css';
 
-export function TextForm({ label, onSubmit, initial = '', button = 'Добавить', placeholder = '', inputId, maxLength = 200, autoFocus = false }) {
+export function TextForm({ label, onSubmit, initial = '', button = 'Добавить', placeholder = '', inputId, maxLength = 200, autoFocus = false, variant }) {
   const generated = useId();
   const id = inputId || generated;
   const input = useRef(null);
@@ -12,9 +14,9 @@ export function TextForm({ label, onSubmit, initial = '', button = 'Добави
     onSubmit(text.trim());
     setText(''); setError(''); input.current?.focus();
   }
-  return <form onSubmit={submit} className="text-form" noValidate>
+  return <form onSubmit={submit} className={styles.textForm} noValidate>
     <label htmlFor={id}>{label}</label>
-    <div className="input-row"><input ref={input} id={id} autoFocus={autoFocus} value={text} onChange={(e) => { setText(e.target.value); setError(''); }} placeholder={placeholder} maxLength={maxLength} aria-invalid={Boolean(error)} aria-describedby={error ? `${id}-error` : undefined} required /><button className="primary" type="submit">{button}</button></div>
-    {error && <p className="error" role="alert" id={`${id}-error`}>{error}</p>}
+    <div className={variant ? `${sharedStyles.inputRow} ${styles[variant]}` : sharedStyles.inputRow}><input ref={input} id={id} autoFocus={autoFocus} value={text} onChange={(e) => { setText(e.target.value); setError(''); }} placeholder={placeholder} maxLength={maxLength} aria-invalid={Boolean(error)} aria-describedby={error ? `${id}-error` : undefined} required /><button className={sharedStyles.primary} type="submit">{button}</button></div>
+    {error && <p className={sharedStyles.error} role="alert" id={`${id}-error`}>{error}</p>}
   </form>;
 }

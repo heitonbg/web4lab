@@ -49,9 +49,9 @@ test('Задержка поиска составляет 300 мс после п�
   await page.clock.runFor(200);
   await page.getByLabel('Поиск по названию в текущем списке').fill('Отч');
   await page.clock.runFor(299);
-  expect(await page.locator('.task-list > li').count()).toBe(2);
+  expect(await page.getByRole('region', { name: /^Список / }).getByRole('listitem').count()).toBe(2);
   await page.clock.runFor(1);
-  await expect(page.locator('.task-list > li')).toHaveCount(1);
+  await expect(page.getByRole('region', { name: /^Список / }).getByRole('listitem')).toHaveCount(1);
 });
 
 test('Контраст текста обеих тем и мобильная карточка', async ({ page }) => {
@@ -77,7 +77,7 @@ test('Контраст текста обеих тем и мобильная ка
   await page.getByRole('link', { name: 'Открыть задачу: Подготовить лабораторную работу', exact: true }).click();
   for (const title of ['Составить план', 'Написать код', 'Проверить результат']) {
     await page.getByLabel('Новая подзадача', { exact: true }).fill(title);
-    await page.locator('.subtasks').getByRole('button', { name: '+', exact: true }).click();
+    await page.getByRole('region', { name: 'По шагам' }).getByRole('button', { name: '+', exact: true }).click();
   }
   await page.getByLabel('Составить план', { exact: true }).check();
   await expect(page.getByText('Выполнено 1 из 3', { exact: true })).toBeVisible();
@@ -93,7 +93,7 @@ test('Списки, изоляция задач, переименование, �
   await addTask(page, 'Отчёт');
   const study = page.url();
   await page.getByLabel('Новый список', { exact: true }).fill('Работа');
-  await page.locator('.sidebar').getByRole('button', { name: '+', exact: true }).click();
+  await page.locator('#sidebar').getByRole('button', { name: '+', exact: true }).click();
   await expect(page.getByRole('heading', { name: 'Работа', exact: true })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Открыть задачу: Отчёт' })).toHaveCount(0);
   await page.getByRole('button', { name: 'Переименовать', exact: true }).click();
@@ -127,18 +127,18 @@ test('Карточка, все операции с подзадачами, пр�
   await page.getByRole('link', { name: 'Открыть задачу: Лабораторная' }).click();
   await expect(page.getByRole('heading', { level: 2, name: 'Лабораторная', exact: true })).toBeFocused();
   await page.getByLabel('Новая подзадача', { exact: true }).fill('   ');
-  await page.locator('.subtasks').getByRole('button', { name: '+', exact: true }).click();
+  await page.getByRole('region', { name: 'По шагам' }).getByRole('button', { name: '+', exact: true }).click();
   await expect(page.getByRole('alert')).toContainText('Введите текст');
   for (const title of ['План', 'Код', 'Проверка']) {
     await page.getByLabel('Новая подзадача', { exact: true }).fill(title);
-    await page.locator('.subtasks').getByRole('button', { name: '+', exact: true }).click();
+    await page.getByRole('region', { name: 'По шагам' }).getByRole('button', { name: '+', exact: true }).click();
   }
   await page.getByLabel('План', { exact: true }).check();
   await page.getByLabel('Код', { exact: true }).check();
   await expect(page.getByText('Выполнено 2 из 3', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Редактировать подзадачу: Проверка', exact: true }).click();
   await page.getByLabel('Название подзадачи', { exact: true }).fill('Тесты');
-  await page.locator('.subtask-editor').getByRole('button', { name: 'Сохранить', exact: true }).click();
+  await page.getByRole('region', { name: 'По шагам' }).getByRole('button', { name: 'Сохранить', exact: true }).click();
   await expect(page.getByLabel('Тесты', { exact: true })).toBeVisible();
   await page.getByRole('button', { name: 'Удалить подзадачу: Тесты', exact: true }).click();
   await expect(page.getByText('Выполнено 2 из 2', { exact: true })).toBeVisible();
@@ -181,7 +181,7 @@ test('Поиск с задержкой, фильтры, назад/вперёд 
   await expect(page.getByRole('button', { name: 'Выполненные', exact: true })).toHaveAttribute('aria-pressed', 'true');
   await page.getByLabel('Поиск по названию в текущем списке').fill('текст');
   await page.getByLabel('Новый список', { exact: true }).fill('Другой');
-  await page.locator('.sidebar').getByRole('button', { name: '+', exact: true }).click();
+  await page.locator('#sidebar').getByRole('button', { name: '+', exact: true }).click();
   await expect(page.getByLabel('Поиск по названию в текущем списке')).toHaveValue('');
 });
 
@@ -197,7 +197,7 @@ test('Пустой ввод, безопасный текст, удаление �
   const title = '<img src=x onerror=alert(1)>';
   await addTask(page, title);
   await expect(page.getByRole('link', { name: `Открыть задачу: ${title}`, exact: true })).toHaveText(title);
-  await expect(page.locator('.task img')).toHaveCount(0);
+  await expect(page.getByRole('region', { name: /^Список / }).locator('img')).toHaveCount(0);
   await addTask(page, 'Удалить');
   await page.getByRole('button', { name: 'Удалить: Удалить', exact: true }).click();
   await page.getByRole('dialog').getByRole('button', { name: 'Удалить', exact: true }).click();

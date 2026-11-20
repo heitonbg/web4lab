@@ -1,0 +1,7 @@
+.addTaskForm { margin-bottom: 24px; }
+.taskOptions { margin-top: 10px; }
+.taskOptions summary { color: var(--muted); cursor: pointer; font-size: 12px; padding: 6px 0; }
+
+@media (max-width: 700px) {
+  .addTaskForm > div button { font-size: 12px; padding: 8px; }
+}

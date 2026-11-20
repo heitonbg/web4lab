@@ -5,6 +5,8 @@ import { NotFoundPage } from '../pages/NotFoundPage.jsx';
 import { TaskEditor } from './TaskEditor.jsx';
 import { SubtaskList } from './SubtaskList.jsx';
 import { ConfirmDialog } from './ConfirmDialog.jsx';
+import sharedStyles from '../styles/shared.module.css';
+import styles from './TaskCard.module.css';
 
 export function TaskCard() {
   const { listId, taskId } = useParams();
@@ -14,13 +16,13 @@ export function TaskCard() {
   const navigate = useNavigate();
   const task = state.tasks.find((item) => item.id === taskId && item.listId === listId);
   const to = `/lists/${listId}${params.size ? `?${params}` : ''}`;
-  return <section className="task-card" aria-label="Карточка задачи">{task ? <>
-    <div className="card-top"><span className="eyebrow">Детали задачи</span><Link className="card-close" to={to} state={{ focusId: `task-link-${task.id}` }} aria-label="Закрыть карточку">← К списку</Link></div>
+  return <section className={styles.taskCard} aria-label="Карточка задачи">{task ? <>
+    <div className={styles.cardTop}><span className={`${sharedStyles.eyebrow} ${styles.cardLabel}`}>Детали задачи</span><Link className={styles.cardClose} to={to} state={{ focusId: `task-link-${task.id}` }} aria-label="Закрыть карточку">← К списку</Link></div>
     <h2 data-page-title tabIndex={-1}>{task.title}</h2>
-    <label className="task-complete"><input type="checkbox" checked={task.done} onChange={() => dispatch({ type: 'task/toggled', id: task.id })} />Задача выполнена</label>
+    <label className={styles.taskComplete}><input type="checkbox" checked={task.done} onChange={() => dispatch({ type: 'task/toggled', id: task.id })} />Задача выполнена</label>
     <TaskEditor key={task.id} task={task} />
     <SubtaskList task={task} />
-    <div className="card-bottom"><span className="muted">Создано {new Intl.DateTimeFormat('ru-RU', { dateStyle: 'medium' }).format(task.createdAt)}</span><button className="text-button danger-text" onClick={() => setDeleting(true)}>Удалить задачу</button></div>
+    <div className={styles.cardBottom}><span className={sharedStyles.muted}>Создано {new Intl.DateTimeFormat('ru-RU', { dateStyle: 'medium' }).format(task.createdAt)}</span><button className={`${sharedStyles.textButton} ${styles.dangerText}`} onClick={() => setDeleting(true)}>Удалить задачу</button></div>
     {deleting && <ConfirmDialog title="Удалить задачу?" onClose={() => setDeleting(false)} onConfirm={() => { dispatch({ type: 'task/removed', id: task.id }); setDeleting(false); navigate(to, { state: { focusId: 'new-task' } }); }}><p>Задача «{task.title}» и её подзадачи будут удалены без возможности восстановления.</p></ConfirmDialog>}
   </> : <NotFoundPage title="Задача не найдена" to={to} link="К списку" />}</section>;
 }

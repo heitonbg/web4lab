@@ -1,0 +1,6 @@
+.textForm label { display: block; font-size: 12px; margin-bottom: 9px; }
+.textForm .compact input { font-size: 12px; padding: 10px; }
+.textForm .compact button { font-size: 22px; padding: 5px 12px; }
+.textForm .stacked { flex-wrap: wrap; }
+.textForm .stacked input { flex-basis: 100%; }
+.textForm .stacked button { font-size: 12px; }

@@ -1,0 +1,16 @@
+.sidebarHeading { display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px; }
+.sidebarHeading h2 { font-size: 16px; margin: 0; }
+.count { display: inline-grid; place-items: center; min-width: 25px; height: 25px; padding: 0 5px; background: var(--surface-alt); border-radius: var(--radius); font-size: 12px; color: var(--text); }
+.listNav { padding: 0; margin: 0 0 30px; list-style: none; display: grid; gap: 8px; }
+.listNav a { display: flex; align-items: center; gap: 10px; padding: 12px 10px; text-decoration: none; color: var(--muted); border: 1px solid transparent; border-radius: var(--radius); }
+.listNav a[aria-current="page"] { background: var(--surface-alt); color: var(--accent); border-color: var(--border); }
+.navTitle { flex: 1; min-width: 0; overflow-wrap: anywhere; font-size: 14px; }
+.listSymbol { font-size: 21px; }
+.sidebarNote { display: flex; gap: 12px; margin-top: 60px; color: var(--muted); font-size: 12px; }
+.sidebarNote > span { color: var(--accent); font-size: 24px; }
+.sidebarHint { font-size: 12px; }
+
+@media (max-width: 700px) {
+  .sidebarNote { display: none; }
+  .listNav { margin-bottom: 18px; }
+}
