@@ -1,0 +1,12 @@
+.status {
+  margin-bottom: 16px;
+  padding: 16px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.updating { color: var(--muted); font-size: 12px; }
+.skeleton { display: grid; gap: 10px; }
+.skeleton span { height: 24px; background: var(--surface-alt); border-radius: var(--radius); }
+.skeleton span:last-child { width: 65%; }

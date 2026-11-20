@@ -1,0 +1,14 @@
+.notice {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 16px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+
+.notice p { margin: 0; flex: 1 1 180px; }
+.notice p[role="alert"] { color: var(--error); }
