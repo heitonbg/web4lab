@@ -10,11 +10,17 @@ export function Notification() {
   const previous = useSelector(selectUndo);
   const pending = useSelector(selectPending);
   if (!notice) return null;
-  return <div className={styles.notice}>
-    <p role={notice.kind === 'error' ? 'alert' : 'status'}>{notice.message}</p>
-    {notice.undoId && notice.undoId === previous?.id && (
-      <button type="button" disabled={pending} onClick={() => dispatch(undo(notice.undoId))}>Отменить</button>
-    )}
-    <button type="button" onClick={() => dispatch(dismiss())} aria-label="Закрыть уведомление">×</button>
-  </div>;
+  return (
+    <div className={styles.notice}>
+      <p role={notice.kind === 'error' ? 'alert' : 'status'}>{notice.message}</p>
+      {notice.undoId && notice.undoId === previous?.id && (
+        <button type="button" disabled={pending} onClick={() => dispatch(undo(notice.undoId))}>
+          Отменить
+        </button>
+      )}
+      <button type="button" onClick={() => dispatch(dismiss())} aria-label="Закрыть уведомление">
+        ×
+      </button>
+    </div>
+  );
 }

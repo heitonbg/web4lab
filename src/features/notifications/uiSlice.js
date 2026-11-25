@@ -4,8 +4,12 @@ const ui = createSlice({
   name: 'ui',
   initialState: { notice: null },
   reducers: {
-    notify(state, { payload }) { state.notice = payload; },
-    dismiss(state) { state.notice = null; },
+    notify(state, { payload }) {
+      state.notice = payload;
+    },
+    dismiss(state) {
+      state.notice = null;
+    },
   },
 });
 

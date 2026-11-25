@@ -9,11 +9,38 @@ export function ConfirmDialog({ title, children, onConfirm, onClose, pending = f
   useEffect(() => {
     const dialog = ref.current;
     dialog.showModal();
-    return () => { dialog.close(); if (opener?.isConnected) opener.focus(); };
+    return () => {
+      dialog.close();
+      if (opener?.isConnected) opener.focus();
+    };
   }, [opener]);
-  return <dialog className={styles.dialog} ref={ref} aria-labelledby={id} onCancel={(event) => { event.preventDefault(); if (!pending) onClose(); }} onClick={(event) => { if (!pending && event.target === ref.current) onClose(); }}>
-    <div className={styles.dialogContent}><p className={sharedStyles.eyebrow}>Подтверждение</p><h2 id={id}>{title}</h2><div>{children}</div>{pending && <p role="status">Удаление на сервере…</p>}
-      <div className={styles.actions}><button type="button" disabled={pending} autoFocus onClick={onClose}>Отмена</button><button type="button" className={styles.danger} onClick={onConfirm} disabled={pending}>{pending ? 'Удаление…' : 'Удалить'}</button></div>
-    </div>
-  </dialog>;
+  return (
+    <dialog
+      className={styles.dialog}
+      ref={ref}
+      aria-labelledby={id}
+      onCancel={(event) => {
+        event.preventDefault();
+        if (!pending) onClose();
+      }}
+      onClick={(event) => {
+        if (!pending && event.target === ref.current) onClose();
+      }}
+    >
+      <div className={styles.dialogContent}>
+        <p className={sharedStyles.eyebrow}>Подтверждение</p>
+        <h2 id={id}>{title}</h2>
+        <div>{children}</div>
+        {pending && <p role="status">Удаление на сервере…</p>}
+        <div className={styles.actions}>
+          <button type="button" disabled={pending} autoFocus onClick={onClose}>
+            Отмена
+          </button>
+          <button type="button" className={styles.danger} onClick={onConfirm} disabled={pending}>
+            {pending ? 'Удаление…' : 'Удалить'}
+          </button>
+        </div>
+      </div>
+    </dialog>
+  );
 }

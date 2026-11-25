@@ -6,7 +6,8 @@ import uiReducer from '../features/notifications/uiSlice.js';
 export function createStore(extraMiddleware = []) {
   return configureStore({
     reducer: { [api.reducerPath]: api.reducer, history: historyReducer, ui: uiReducer },
-    middleware: (getDefaultMiddleware) => getDefaultMiddleware().concat(api.middleware, ...extraMiddleware),
+    middleware: (getDefaultMiddleware) =>
+      getDefaultMiddleware().concat(api.middleware, ...extraMiddleware),
   });
 }
 

@@ -10,7 +10,8 @@ export default [
   {
     files: ['**/*.{js,jsx}'],
     languageOptions: {
-      ecmaVersion: 'latest', sourceType: 'module',
+      ecmaVersion: 'latest',
+      sourceType: 'module',
       parserOptions: { ecmaFeatures: { jsx: true } },
       globals: { ...globals.browser, ...globals.node },
     },

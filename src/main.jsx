@@ -8,4 +8,12 @@ import { store } from './app/store.js';
 import { ThemeProvider } from './theme/ThemeContext.jsx';
 import { router } from './router.jsx';
 
-createRoot(document.getElementById('root')).render(<StrictMode><ThemeProvider><Provider store={store}><RouterProvider router={router} /></Provider></ThemeProvider></StrictMode>);
+createRoot(document.getElementById('root')).render(
+  <StrictMode>
+    <ThemeProvider>
+      <Provider store={store}>
+        <RouterProvider router={router} />
+      </Provider>
+    </ThemeProvider>
+  </StrictMode>,
+);

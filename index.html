@@ -4,7 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="theme-color" content="#1a1916" />
-    <meta name="description" content="Менеджер задач: списки, подзадачи, поиск и темы. Лабораторная работа №3 на React." />
+    <meta
+      name="description"
+      content="Менеджер задач: списки, подзадачи, поиск и темы. Лабораторная работа №3 на React."
+    />
     <title>Список дел — менеджер задач</title>
     <script>
       (() => {
@@ -12,7 +15,9 @@
         try {
           const saved = JSON.parse(localStorage.getItem('todo-app:theme'));
           if (saved === 'light' || saved === 'dark') theme = saved;
-        } catch { /* При недоступном хранилище остаётся системная тема. */ }
+        } catch {
+          /* При недоступном хранилище остаётся системная тема. */
+        }
         document.documentElement.dataset.theme = theme;
       })();
     </script>
