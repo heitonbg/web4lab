@@ -1,5 +1,5 @@
 :root {
-  font-family: "Courier New", Courier, monospace;
+  font-family: 'Courier New', Courier, monospace;
   color-scheme: light;
   --bg: #faf6ee;
   --surface: #fffdf8;
@@ -14,7 +14,7 @@
   --shadow: 0 24px 70px #29231c20;
   --radius: 4px;
 }
-:root[data-theme="dark"] {
+:root[data-theme='dark'] {
   color-scheme: dark;
   --bg: #1a1916;
   --surface: #24221e;

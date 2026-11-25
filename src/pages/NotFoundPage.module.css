@@ -1,2 +1,7 @@
-.emptyState { padding: 60px 10px; text-align: center; }
-.emptyState h1 { font-size: 30px; }
+.emptyState {
+  padding: 60px 10px;
+  text-align: center;
+}
+.emptyState h1 {
+  font-size: 30px;
+}

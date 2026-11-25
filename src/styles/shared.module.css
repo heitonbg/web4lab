@@ -1,19 +1,88 @@
-.eyebrow { color: var(--accent); font-size: 11px; text-transform: uppercase; letter-spacing: 2px; }
-.visuallyHidden { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
-.inputRow { display: flex; gap: 8px; align-items: stretch; }
-.inputRow input { flex: 1; }
-.inputRow button { flex-shrink: 0; }
-.primary { background: var(--accent-fill); border-color: var(--accent-fill); color: var(--accent-ink); font-weight: bold; }
-.primary:hover { background: var(--accent-fill); filter: brightness(.93); }
-.field { display: grid; gap: 8px; margin: 18px 0; }
-.field label { font-size: 12px; color: var(--muted); }
-.muted { color: var(--muted); }
-.taskActions { display: flex; gap: 4px; }
-.iconButton { display: inline-grid; place-items: center; border: 1px solid var(--border); border-radius: var(--radius); padding: 0; min-width: 32px; min-height: 32px; text-decoration: none; color: var(--accent); background: var(--surface); font-size: 20px; }
-.iconButton:hover { background: var(--surface-alt); border-color: var(--accent); }
-.textButton { border: none; padding: 6px 0; color: var(--accent); background: none; font-size: 12px; }
-.error { color: var(--error); font-size: 12px; margin: 8px 0 0; }
+.eyebrow {
+  color: var(--accent);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+.visuallyHidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+.inputRow {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+.inputRow input {
+  flex: 1;
+}
+.inputRow button {
+  flex-shrink: 0;
+}
+.primary {
+  background: var(--accent-fill);
+  border-color: var(--accent-fill);
+  color: var(--accent-ink);
+  font-weight: bold;
+}
+.primary:hover {
+  background: var(--accent-fill);
+  filter: brightness(0.93);
+}
+.field {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0;
+}
+.field label {
+  font-size: 12px;
+  color: var(--muted);
+}
+.muted {
+  color: var(--muted);
+}
+.taskActions {
+  display: flex;
+  gap: 4px;
+}
+.iconButton {
+  display: inline-grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 0;
+  min-width: 32px;
+  min-height: 32px;
+  text-decoration: none;
+  color: var(--accent);
+  background: var(--surface);
+  font-size: 20px;
+}
+.iconButton:hover {
+  background: var(--surface-alt);
+  border-color: var(--accent);
+}
+.textButton {
+  border: none;
+  padding: 6px 0;
+  color: var(--accent);
+  background: none;
+  font-size: 12px;
+}
+.error {
+  color: var(--error);
+  font-size: 12px;
+  margin: 8px 0 0;
+}
 
 @media (max-width: 700px) {
-  .taskActions { flex-direction: column; }
+  .taskActions {
+    flex-direction: column;
+  }
 }

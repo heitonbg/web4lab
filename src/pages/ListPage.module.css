@@ -1,35 +1,154 @@
-.listLayout { max-width: 900px; margin: 0 auto; }
-.listLayout.hasCard { max-width: none; display: grid; grid-template-columns: minmax(0, 1fr) minmax(300px, .85fr); gap: 28px; }
-.listPane { min-width: 0; }
-.pageHeader { margin-bottom: 28px; }
-.titleRow { display: flex; align-items: flex-start; gap: 15px; }
-.titleRow h1 { flex: 1; margin-bottom: 14px; }
-.listNumber { color: var(--accent); font-size: 34px; line-height: 1; opacity: .8; }
-.listTools { display: flex; flex-wrap: wrap; gap: 12px; }
-.listTools button { font-size: 11px; min-height: 30px; padding: 4px 0; border: 0; background: none; color: var(--muted); text-decoration: underline; text-underline-offset: 4px; }
-.renamePanel { padding: 16px; background: var(--surface-alt); margin-bottom: 20px; border-radius: var(--radius); }
-.searchField { display: flex; align-items: center; gap: 8px; border-bottom: 1px solid var(--border); margin-bottom: 16px; }
-.searchField > span { font-size: 28px; color: var(--muted); }
-.searchField input { border: 0; background: transparent; font-size: 13px; }
-.listToolbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; margin: 20px 0; }
-.filters { display: flex; gap: 4px; flex-wrap: wrap; }
-.filters button { font-size: 11px; border: 0; padding: 8px 9px; min-height: 36px; background: transparent; color: var(--muted); }
-.filters button[aria-pressed="true"] { background: var(--surface-alt); color: var(--accent); box-shadow: inset 0 -2px var(--accent); }
-.resultCount { font-size: 11px; }
-.taskList { padding: 0; list-style: none; display: grid; gap: 12px; }
-.listBottom { display: flex; align-items: center; justify-content: space-between; gap: 12px; flex-wrap: wrap; padding-top: 18px; margin-top: 24px; border-top: 1px solid var(--border); font-size: 12px; }
-.emptyState { text-align: center; padding: 40px 10px; border: 1px dashed var(--border); border-radius: var(--radius); }
-.emptyState h2 { font-size: 20px; }
-.emptyState p { font-size: 13px; }
-.emptySymbol { display: block; font-size: 45px; color: var(--accent); margin-bottom: 20px; }
+.listLayout {
+  max-width: 900px;
+  margin: 0 auto;
+}
+.listLayout.hasCard {
+  max-width: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(300px, 0.85fr);
+  gap: 28px;
+}
+.listPane {
+  min-width: 0;
+}
+.pageHeader {
+  margin-bottom: 28px;
+}
+.titleRow {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+.titleRow h1 {
+  flex: 1;
+  margin-bottom: 14px;
+}
+.listNumber {
+  color: var(--accent);
+  font-size: 34px;
+  line-height: 1;
+  opacity: 0.8;
+}
+.listTools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.listTools button {
+  font-size: 11px;
+  min-height: 30px;
+  padding: 4px 0;
+  border: 0;
+  background: none;
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+.renamePanel {
+  padding: 16px;
+  background: var(--surface-alt);
+  margin-bottom: 20px;
+  border-radius: var(--radius);
+}
+.searchField {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 16px;
+}
+.searchField > span {
+  font-size: 28px;
+  color: var(--muted);
+}
+.searchField input {
+  border: 0;
+  background: transparent;
+  font-size: 13px;
+}
+.listToolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+.filters {
+  display: flex;
+  gap: 4px;
+  flex-wrap: wrap;
+}
+.filters button {
+  font-size: 11px;
+  border: 0;
+  padding: 8px 9px;
+  min-height: 36px;
+  background: transparent;
+  color: var(--muted);
+}
+.filters button[aria-pressed='true'] {
+  background: var(--surface-alt);
+  color: var(--accent);
+  box-shadow: inset 0 -2px var(--accent);
+}
+.resultCount {
+  font-size: 11px;
+}
+.taskList {
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 12px;
+}
+.listBottom {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+  padding-top: 18px;
+  margin-top: 24px;
+  border-top: 1px solid var(--border);
+  font-size: 12px;
+}
+.emptyState {
+  text-align: center;
+  padding: 40px 10px;
+  border: 1px dashed var(--border);
+  border-radius: var(--radius);
+}
+.emptyState h2 {
+  font-size: 20px;
+}
+.emptyState p {
+  font-size: 13px;
+}
+.emptySymbol {
+  display: block;
+  font-size: 45px;
+  color: var(--accent);
+  margin-bottom: 20px;
+}
 
 @media (max-width: 1100px) {
-  .listLayout.hasCard { display: block; }
-  .hasCard > .listPane { display: none; }
+  .listLayout.hasCard {
+    display: block;
+  }
+  .hasCard > .listPane {
+    display: none;
+  }
 }
 
 @media (max-width: 700px) {
-  .pageHeader { margin-bottom: 22px; }
-  .listToolbar { gap: 10px; }
-  .filters button { font-size: 10px; padding: 8px; }
+  .pageHeader {
+    margin-bottom: 22px;
+  }
+  .listToolbar {
+    gap: 10px;
+  }
+  .filters button {
+    font-size: 10px;
+    padding: 8px;
+  }
 }
